@@ -1,3 +1,6 @@
 # $FreeBSD$
 #
 # System-wide .logout file for csh(1).
+
+# Clear the screen at logout.
+clear
