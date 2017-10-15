@@ -440,6 +440,10 @@ case ${firewall_type} in
 	#				 denied incoming packets are not
 	#				 logged.
 
+	# Enable spoof protections
+	${fwcmd} add deny ip from any to any not verrevpath in
+	${fwcmd} add deny ip from any to any not antispoof in
+
 	# Allow packets for which a state has been built.
 	${fwcmd} add check-state
 
