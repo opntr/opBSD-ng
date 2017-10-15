@@ -903,8 +903,8 @@ fork1(struct thread *td, struct fork_req *fr)
 		sx_xlock(&allproc_lock);
 		if (ppsratecheck(&lastfail, &curfail, 1)) {
 			printf("maxproc limit exceeded by uid %u (pid %d); "
-			    "see tuning(7) and login.conf(5)\n",
-			    td->td_ucred->cr_ruid, p1->p_pid);
+			    "(proc %s); see tuning(7) and login.conf(5)\n",
+			    td->td_ucred->cr_ruid, p1->p_pid, td->td_proc->p_comm);
 		}
 		sx_xunlock(&allproc_lock);
 		goto fail2;
