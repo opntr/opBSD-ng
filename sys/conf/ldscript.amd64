@@ -72,6 +72,11 @@ SECTIONS
   PROVIDE (__etext = .);
   PROVIDE (_etext = .);
   PROVIDE (etext = .);
+  /*
+     Align the end of etext to page boundary to prevent
+     overlapping mapping in PTI case.
+   */
+  . = ALIGN(4096);
   .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
   .rodata1        : { *(.rodata1) }
   .eh_frame_hdr : { *(.eh_frame_hdr) }
